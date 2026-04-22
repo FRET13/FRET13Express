@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRET 13 EXPRESS — Transport Express & Dédié | Rognac · PACA · France</title>
+<meta name="description" content="Transport express et dédié depuis Rognac (13). Spécialiste des secteurs sensibles : militaire, santé, télécom, nucléaire. Kangoo, Trafic, 20m3, frigorifique. 24h/24 7j/7.">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,600;0,700;0,800;0,900;1,800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue:       #38bdf8;
+    --blue-mid:   #0ea5e9;
+    --blue-dark:  #0369a1;
+    --blue-deep:  #082f49;
+    --blue-glow:  rgba(56,189,248,0.18);
+    --blue-glow2: rgba(56,189,248,0.08);
+    --black:      #060810;
+    --dark:       #0b0f1a;
+    --surface:    #10162a;
+    --surface2:   #161e35;
+    --border:     #1e2d4a;
+    --border2:    #253354;
+    --text:       #e8f0f8;
+    --muted:      #6a80a0;
+    --white:      #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--dark); }
+  ::-webkit-scrollbar-thumb { background: var(--blue-mid); border-radius: 4px; }
+
+  .container      { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  .container-wide { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
+
+  /* ══════════════════════ NAV ══════════════════════ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: rgba(6,8,16,0.95);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    transition: border-color .4s;
+  }
+  nav.scrolled { border-bottom-color: rgba(56,189,248,.25); }
+
+  .nav-inner {
+    height: 72px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 24px; letter-spacing: 1px;
+    color: var(--white); text-decoration: none;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .logo-icon {
+    width: 40px; height: 40px;
+    background: var(--blue-mid);
+    clip-path: polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .logo em { color: var(--blue); font-style: normal; }
+  .logo-sub {
+    font-size: 9px; font-weight: 600; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--muted);
+    display: block; margin-top: 1px;
+  }
+
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 12px; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--muted);
+    text-decoration: none; transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+
+  .nav-tel {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 15px; font-weight: 700 !important;
+    color: var(--blue) !important; letter-spacing: .5px !important;
+    text-transform: none !important;
+  }
+  .nav-tel::before { content: ''; display: block; width: 8px; height: 8px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 8px var(--blue); animation: blink 2s infinite; }
+
+  @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.3;} }
+
+  .nav-devis {
+    background: var(--blue-mid) !important;
+    color: white !important;
+    padding: 10px 22px !important;
+    font-weight: 700 !important;
+    clip-path: polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+    transition: background .2s !important;
+  }
+  .nav-devis:hover { background: var(--blue-dark) !important; color: white !important; }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { display: block; width: 26px; height: 2px; background: var(--text); border-radius: 2px; transition: .3s; }
+
+  /* ══════════════════════ HERO ══════════════════════ */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding-top: 72px;
+  }
+
+  /* Animated bg */
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(ellipse 70% 60% at 80% 50%, rgba(14,165,233,.1) 0%, transparent 65%),
+                radial-gradient(ellipse 40% 40% at 20% 80%, rgba(56,189,248,.06) 0%, transparent 60%),
+                var(--black);
+  }
+
+  /* Diagonal grid */
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(rgba(56,189,248,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(56,189,248,.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    transform: skewY(-3deg) scaleY(1.1);
+    transform-origin: top left;
+  }
+
+  /* Animated scan lines */
+  .scan-lines {
+    position: absolute; inset: 0; z-index: 0; overflow: hidden;
+  }
+  .scan-line {
+    position: absolute; left: 0; right: 0;
+    height: 1px; background: linear-gradient(to right, transparent, rgba(56,189,248,.3), transparent);
+    animation: scanDown 6s linear infinite;
+    opacity: 0;
+  }
+  .scan-line:nth-child(1) { animation-delay: 0s; }
+  .scan-line:nth-child(2) { animation-delay: 2s; }
+  .scan-line:nth-child(3) { animation-delay: 4s; }
+
+  @keyframes scanDown {
+    0%   { top: -1px; opacity: 0; }
+    5%   { opacity: 1; }
+    95%  { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+  }
+
+  /* Corner bracket decoration */
+  .corner-bracket {
+    position: absolute; z-index: 1;
+    width: 40px; height: 40px;
+  }
+  .corner-bracket.tl { top: 90px; left: 20px; border-top: 2px solid var(--blue); border-left: 2px solid var(--blue); }
+  .corner-bracket.tr { top: 90px; right: 20px; border-top: 2px solid var(--blue); border-right: 2px solid var(--blue); }
+
+  .hero-content { position: relative; z-index: 2; max-width: 720px; }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 11px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--blue);
+    margin-bottom: 24px;
+    animation: fadeUp .7s ease both;
+  }
+  .eyebrow-line { display: block; width: 36px; height: 2px; background: var(--blue); }
+
+  .hero-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: clamp(50px, 7.5vw, 96px);
+    line-height: .92; letter-spacing: -1px;
+    text-transform: uppercase; color: var(--white);
+    margin-bottom: 12px;
+    animation: fadeUp .7s ease .1s both;
+  }
+  .hero-title em { font-style: normal; color: var(--blue); }
+
+  .hero-title-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 300; font-size: clamp(20px, 3vw, 32px);
+    color: var(--muted); text-transform: uppercase; letter-spacing: 4px;
+    margin-bottom: 32px;
+    animation: fadeUp .7s ease .15s both;
+  }
+
+  .hero-desc {
+    font-size: 16px; font-weight: 300; color: var(--muted);
+    line-height: 1.8; max-width: 560px; margin-bottom: 40px;
+    animation: fadeUp .7s ease .2s both;
+  }
+  .hero-desc strong { color: var(--text); font-weight: 500; }
+
+  /* Sector pills */
+  .sector-pills {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 40px;
+    animation: fadeUp .7s ease .25s both;
+  }
+  .pill {
+    font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border: 1px solid var(--border2);
+    color: var(--muted); background: var(--surface);
+    clip-path: polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+    transition: all .2s;
+  }
+  .pill:hover, .pill.active {
+    border-color: var(--blue);
+    color: var(--blue);
+    background: var(--blue-glow2);
+  }
+
+  .hero-btns {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    animation: fadeUp .7s ease .3s both;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--blue-mid); color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 17px; letter-spacing: 2px;
+    text-transform: uppercase; padding: 16px 34px;
+    text-decoration: none;
+    clip-path: polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);
+    transition: background .2s, transform .2s;
+  }
+  .btn-primary:hover { background: var(--blue-dark); transform: translateX(4px); }
+
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: transparent; color: var(--text);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 17px; letter-spacing: 2px;
+    text-transform: uppercase; padding: 16px 34px;
+    text-decoration: none;
+    border: 1px solid var(--border2);
+    clip-path: polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);
+    transition: border-color .2s, color .2s;
+  }
+  .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+
+  /* KPI strip */
+  .kpi-strip {
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 3;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    animation: fadeUp .7s ease .5s both;
+  }
+  .kpi-grid {
+    display: grid; grid-template-columns: repeat(5,1fr);
+  }
+  .kpi {
+    padding: 22px 24px; border-right: 1px solid var(--border);
+    text-align: center;
+  }
+  .kpi:last-child { border-right: none; }
+  .kpi-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 34px; letter-spacing: -1px;
+    color: var(--blue); line-height: 1; margin-bottom: 4px;
+  }
+  .kpi-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--muted);
+  }
+
+  /* ══════════════════════ SECTIONS ══════════════════════ */
+  section { padding: 96px 0; }
+
+  .sec-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 10px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--blue); margin-bottom: 14px;
+  }
+  .sec-eyebrow::before { content: ''; display: block; width: 24px; height: 2px; background: var(--blue); }
+
+  .sec-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: clamp(34px, 4.5vw, 58px);
+    text-transform: uppercase; line-height: .95;
+    letter-spacing: -.5px; color: var(--white); margin-bottom: 18px;
+  }
+  .sec-title span { color: var(--blue); }
+
+  .sec-desc {
+    font-size: 16px; font-weight: 300; color: var(--muted);
+    line-height: 1.8; max-width: 580px;
+  }
+
+  /* ══════════════════════ SECTEURS ══════════════════════ */
+  #secteurs { background: var(--dark); }
+
+  .secteurs-intro {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 56px; gap: 40px; flex-wrap: wrap;
+  }
+
+  .alert-box {
+    background: rgba(56,189,248,.07);
+    border: 1px solid rgba(56,189,248,.25);
+    padding: 18px 24px;
+    max-width: 380px; flex-shrink: 0;
+  }
+  .alert-box-title {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--blue); margin-bottom: 8px;
+  }
+  .alert-box-text { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+  .secteurs-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  }
+
+  .secteur-card {
+    background: var(--surface); padding: 36px 32px;
+    position: relative; overflow: hidden;
+    cursor: default; transition: background .3s;
+  }
+  .secteur-card:hover { background: var(--surface2); }
+  .secteur-card::after {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px; background: var(--blue);
+    transform: scaleY(0); transform-origin: bottom;
+    transition: transform .4s ease;
+  }
+  .secteur-card:hover::after { transform: scaleY(1); }
+
+  .secteur-icon {
+    font-size: 36px; margin-bottom: 20px; display: block;
+    filter: grayscale(1); transition: filter .3s;
+  }
+  .secteur-card:hover .secteur-icon { filter: none; }
+
+  .secteur-num {
+    position: absolute; top: 16px; right: 20px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 72px;
+    color: rgba(56,189,248,.05); line-height: 1;
+    transition: color .3s;
+  }
+  .secteur-card:hover .secteur-num { color: rgba(56,189,248,.1); }
+
+  .secteur-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 22px; text-transform: uppercase;
+    letter-spacing: .5px; color: var(--white); margin-bottom: 10px;
+  }
+  .secteur-desc { font-size: 13px; color: var(--muted); line-height: 1.75; }
+
+  .secteur-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+  .stag {
+    font-size: 10px; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; padding: 3px 10px;
+    border: 1px solid var(--border); color: var(--muted); border-radius: 1px;
+  }
+
+  /* ══════════════════════ VÉHICULES ══════════════════════ */
+  #vehicules { background: var(--black); }
+
+  .vehicules-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;
+    margin-top: 56px;
+  }
+
+  .vehicule-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px 20px 24px;
+    text-align: center; position: relative; overflow: hidden;
+    transition: border-color .3s, transform .3s;
+  }
+  .vehicule-card:hover { border-color: var(--blue); transform: translateY(-4px); }
+
+  .vehicule-emoji { font-size: 42px; display: block; margin-bottom: 16px; }
+
+  .vehicule-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 18px; text-transform: uppercase;
+    letter-spacing: .5px; color: var(--white); margin-bottom: 8px;
+  }
+  .vehicule-desc { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+
+  .vehicule-specs { display: flex; flex-direction: column; gap: 4px; }
+  .vspec {
+    font-size: 10px; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--blue);
+    padding: 4px 0; border-top: 1px solid var(--border);
+  }
+  .vspec:first-child { border-top: none; }
+
+  .vehicule-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px; background: var(--blue);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .4s ease;
+  }
+  .vehicule-card:hover::before { transform: scaleX(1); }
+
+  /* ══════════════════════ POURQUOI ══════════════════════ */
+  #pourquoi { background: var(--dark); position: relative; overflow: hidden; }
+
+  #pourquoi::before {
+    content: '';
+    position: absolute; right: -200px; top: 50%; transform: translateY(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(56,189,248,.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .pourquoi-grid {
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: start;
+  }
+
+  .atouts { display: flex; flex-direction: column; gap: 0; }
+  .atout {
+    display: flex; gap: 22px; align-items: flex-start;
+    padding: 26px 0; border-bottom: 1px solid var(--border);
+    transition: padding-left .3s;
+  }
+  .atout:first-child { border-top: 1px solid var(--border); }
+  .atout:hover { padding-left: 8px; }
+
+  .atout-icon {
+    width: 48px; height: 48px; flex-shrink: 0;
+    background: var(--blue-glow2);
+    border: 1px solid rgba(56,189,248,.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  }
+
+  .atout-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 20px; text-transform: uppercase;
+    letter-spacing: .5px; color: var(--white); margin-bottom: 6px;
+  }
+  .atout-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+  /* Infographic card */
+  .info-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+
+  .info-header {
+    background: var(--blue-mid);
+    padding: 20px 24px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 18px; letter-spacing: 2px;
+    text-transform: uppercase; color: white;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .info-body { padding: 24px; display: flex; flex-direction: column; gap: 0; }
+
+  .info-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 0; border-bottom: 1px solid var(--border);
+  }
+  .info-row:last-child { border-bottom: none; }
+
+  .info-row-label { font-size: 12px; color: var(--muted); font-weight: 500; }
+  .info-row-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 18px; letter-spacing: .5px;
+    color: var(--blue);
+  }
+
+  .zone-tag {
+    font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    background: var(--blue-glow2); border: 1px solid rgba(56,189,248,.25);
+    color: var(--blue);
+    display: inline-block;
+  }
+
+  /* ══════════════════════ PROCESSUS ══════════════════════ */
+  #processus { background: var(--black); }
+
+  .process-steps {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    gap: 2px; margin-top: 60px; position: relative;
+  }
+
+  .process-step {
+    background: var(--surface); padding: 40px 28px;
+    position: relative; overflow: hidden; text-align: center;
+  }
+
+  .step-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 80px; line-height: 1;
+    color: rgba(56,189,248,.06);
+    position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+    transition: color .3s;
+  }
+  .process-step:hover .step-num { color: rgba(56,189,248,.12); }
+
+  .step-icon-wrap {
+    width: 64px; height: 64px; margin: 0 auto 20px;
+    background: var(--blue-glow2);
+    border: 1px solid rgba(56,189,248,.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; position: relative; z-index: 1;
+    clip-path: polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);
+    transition: background .3s;
+  }
+  .process-step:hover .step-icon-wrap { background: rgba(56,189,248,.18); }
+
+  .step-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 20px; text-transform: uppercase;
+    color: var(--white); margin-bottom: 10px; position: relative; z-index: 1;
+  }
+  .step-desc { font-size: 13px; color: var(--muted); line-height: 1.7; position: relative; z-index: 1; }
+
+  /* Arrow connectors */
+  .process-step::after {
+    content: '→';
+    position: absolute; right: -16px; top: 50%; transform: translateY(-50%);
+    font-size: 22px; color: var(--blue); z-index: 10;
+    display: block;
+  }
+  .process-step:last-child::after { display: none; }
+
+  /* ══════════════════════ CTA STRIP ══════════════════════ */
+  .cta-strip {
+    background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 100%);
+    position: relative; overflow: hidden;
+  }
+  .cta-strip::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      -45deg, transparent, transparent 20px,
+      rgba(255,255,255,.04) 20px, rgba(255,255,255,.04) 40px
+    );
+  }
+  .cta-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 36px 32px; gap: 32px; flex-wrap: wrap;
+    position: relative; z-index: 1;
+  }
+  .cta-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 30px; text-transform: uppercase;
+    letter-spacing: -.5px; color: white; line-height: 1.1;
+  }
+  .cta-sub { font-size: 14px; color: rgba(255,255,255,.75); margin-top: 5px; }
+  .btn-white {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: white; color: var(--blue-dark);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 18px; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 16px 34px;
+    text-decoration: none; flex-shrink: 0;
+    clip-path: polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);
+    transition: transform .2s, opacity .2s;
+  }
+  .btn-white:hover { transform: translateX(4px); opacity: .92; }
+
+  /* ══════════════════════ CONTACT ══════════════════════ */
+  #contact { background: var(--dark); }
+
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px;
+    align-items: start; margin-top: 60px;
+  }
+
+  .contact-blocks { display: flex; flex-direction: column; gap: 28px; }
+
+  .dispo {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(0,220,120,.08); border: 1px solid rgba(0,220,120,.3);
+    padding: 12px 20px; margin-bottom: 8px;
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: #00dc78;
+  }
+  .dispo-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #00dc78; box-shadow: 0 0 10px #00dc78;
+    animation: blink 1.5s infinite;
+  }
+
+  .cblock {
+    display: flex; gap: 18px; align-items: flex-start;
+  }
+  .cblock-icon {
+    width: 46px; height: 46px; flex-shrink: 0;
+    background: var(--blue-glow2); border: 1px solid rgba(56,189,248,.25);
+    display: flex; align-items: center; justify-content: center; font-size: 20px;
+    clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  }
+  .cblock-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--blue); margin-bottom: 5px;
+  }
+  .cblock-val { font-size: 16px; font-weight: 600; color: var(--text); }
+  .cblock-val a { color: var(--text); text-decoration: none; transition: color .2s; }
+  .cblock-val a:hover { color: var(--blue); }
+  .cblock-sub { font-size: 12px; color: var(--muted); margin-top: 3px; }
+
+  /* Form */
+  .form { display: flex; flex-direction: column; gap: 14px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-group { display: flex; flex-direction: column; gap: 7px; }
+  .form-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .form-input, .form-select, .form-textarea {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 13px 16px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px; outline: none;
+    transition: border-color .2s;
+    border-radius: 0; width: 100%;
+  }
+  .form-input::placeholder, .form-textarea::placeholder { color: var(--muted); opacity: .6; }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--blue); }
+  .form-select { cursor: pointer; }
+  .form-textarea { resize: vertical; min-height: 100px; }
+
+  .form-submit {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    background: var(--blue-mid); color: white;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 18px; letter-spacing: 2px;
+    text-transform: uppercase; padding: 18px 40px;
+    border: none; cursor: pointer; width: 100%;
+    clip-path: polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);
+    transition: background .2s, transform .2s;
+  }
+  .form-submit:hover { background: var(--blue-dark); transform: translateY(-2px); }
+  .form-note { font-size: 11px; color: var(--muted); text-align: center; margin-top: 4px; }
+
+  /* ══════════════════════ FOOTER ══════════════════════ */
+  footer {
+    background: var(--black);
+    border-top: 1px solid var(--border);
+    padding: 64px 0 28px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px;
+  }
+  .footer-brand { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 26px; color: var(--white); margin-bottom: 10px; }
+  .footer-brand em { color: var(--blue); font-style: normal; }
+  .footer-tagline { font-size: 12px; color: var(--muted); line-height: 1.8; margin-bottom: 18px; max-width: 300px; }
+
+  .footer-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+  .fbadge {
+    font-size: 10px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; padding: 4px 10px;
+    border: 1px solid var(--border); color: var(--muted); border-radius: 1px;
+  }
+
+  .footer-col-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 15px; text-transform: uppercase;
+    letter-spacing: 1.5px; color: var(--white); margin-bottom: 18px;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color .2s; }
+  .footer-links a:hover { color: var(--blue); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border); padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+  }
+  .footer-copy { font-size: 12px; color: var(--muted); }
+  .footer-copy em { color: var(--blue); font-style: normal; }
+
+  /* ══════════════════════ ANIMS ══════════════════════ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-d1 { transition-delay: .1s; }
+  .reveal-d2 { transition-delay: .2s; }
+  .reveal-d3 { transition-delay: .3s; }
+
+  /* ══════════════════════ RESPONSIVE ══════════════════════ */
+  @media (max-width: 1100px) {
+    .vehicules-grid { grid-template-columns: repeat(3,1fr); }
+    .kpi-grid { grid-template-columns: repeat(3,1fr); }
+  }
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .secteurs-grid { grid-template-columns: 1fr; }
+    .vehicules-grid { grid-template-columns: repeat(2,1fr); }
+    .pourquoi-grid { grid-template-columns: 1fr; gap: 48px; }
+    .process-steps { grid-template-columns: repeat(2,1fr); }
+    .process-step::after { display: none; }
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .kpi-grid { grid-template-columns: repeat(3,1fr); }
+    .secteurs-intro { flex-direction: column; }
+    section { padding: 70px 0; }
+  }
+  @media (max-width: 560px) {
+    .container { padding: 0 18px; }
+    .vehicules-grid { grid-template-columns: 1fr 1fr; }
+    .kpi-grid { grid-template-columns: repeat(2,1fr); }
+    .footer-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-btns { flex-direction: column; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <div class="logo-icon">🚚</div>
+        <div>
+          FRET 13 <em>EXPRESS</em>
+          <span class="logo-sub">Rognac · Bouches-du-Rhône · PACA</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#secteurs">Secteurs</a></li>
+        <li><a href="#vehicules">Flotte</a></li>
+        <li><a href="#pourquoi">Notre force</a></li>
+        <li><a href="#processus">Processus</a></li>
+        <li><a href="tel:0683335944" class="nav-tel">06 83 33 59 44</a></li>
+        <li><a href="#contact" class="nav-devis">Devis immédiat</a></li>
+      </ul>
+      <div class="hamburger" id="burger" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="accueil">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="scan-lines">
+    <div class="scan-line"></div>
+    <div class="scan-line"></div>
+    <div class="scan-line"></div>
+  </div>
+  <div class="corner-bracket tl"></div>
+  <div class="corner-bracket tr"></div>
+
+  <div class="container" style="padding-bottom: 130px; padding-top: 50px;">
+    <div class="hero-content">
+      <div class="eyebrow">
+        <span class="eyebrow-line"></span>
+        Transport Express &amp; Dédié — Rognac (13)
+      </div>
+      <h1 class="hero-title">
+        Fiabilité<br>
+        <em>absolue.</em>
+      </h1>
+      <p class="hero-title-sub">Du colis à la palette · Partout en France</p>
+      <p class="hero-desc">
+        Depuis <strong>Rognac, Bouches-du-Rhône</strong>, FRET 13 EXPRESS assure le transport express et dédié de vos marchandises
+        pour les secteurs les plus exigeants — <strong>militaire, santé, télécom, nucléaire, industrie critique</strong>.
+        Disponible <strong>24h/24, 7j/7</strong>, jours fériés inclus.
+      </p>
+      <div class="sector-pills">
+        <span class="pill active">🛡 Militaire &amp; Défense</span>
+        <span class="pill active">🏥 Santé &amp; Médical</span>
+        <span class="pill active">📡 Télécom</span>
+        <span class="pill active">⚛ Nucléaire</span>
+        <span class="pill active">⚙ Industrie</span>
+        <span class="pill active">🏗 BTP &amp; Énergie</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">➜ Demander un devis</a>
+        <a href="tel:0683335944" class="btn-outline">📞 06 83 33 59 44</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="kpi-strip">
+    <div class="container-wide">
+      <div class="kpi-grid">
+        <div class="kpi"><div class="kpi-val">24/7</div><div class="kpi-label">Disponibilité</div></div>
+        <div class="kpi"><div class="kpi-val">J+1</div><div class="kpi-label">Délai Express</div></div>
+        <div class="kpi"><div class="kpi-val">+8</div><div class="kpi-label">Pays couverts</div></div>
+        <div class="kpi"><div class="kpi-val">100%</div><div class="kpi-label">Dédié GPS</div></div>
+        <div class="kpi"><div class="kpi-val">5</div><div class="kpi-label">Types de véhicules</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTEURS -->
+<section id="secteurs">
+  <div class="container">
+    <div class="secteurs-intro reveal">
+      <div>
+        <div class="sec-eyebrow">Secteurs d'activité</div>
+        <h2 class="sec-title">Spécialistes des<br><span>missions critiques</span></h2>
+        <p class="sec-desc">Nos clients opèrent dans des environnements où la défaillance logistique n'est pas une option. Nous le savons. C'est notre responsabilité.</p>
+      </div>
+      <div class="alert-box">
+        <div class="alert-box-title">⚠ Discrétion garantie</div>
+        <div class="alert-box-text">Tout transport sensible fait l'objet d'un protocole de confidentialité strict. Nos chauffeurs sont sélectionnés et formés pour intervenir dans des environnements à accès réglementé.</div>
+      </div>
+    </div>
+
+    <div class="secteurs-grid reveal">
+      <div class="secteur-card">
+        <span class="secteur-icon">🛡</span>
+        <span class="secteur-num">01</span>
+        <h3 class="secteur-title">Militaire &amp; Défense</h3>
+        <p class="secteur-desc">Transport de pièces, équipements et documents pour les bases militaires, DGA, DCNS et prestataires défense. Chaîne de responsabilité documentée de bout en bout.</p>
+        <div class="secteur-tags">
+          <span class="stag">Habilitation</span>
+          <span class="stag">Traçabilité totale</span>
+          <span class="stag">Zones réglementées</span>
+        </div>
+      </div>
+
+      <div class="secteur-card">
+        <span class="secteur-icon">🏥</span>
+        <span class="secteur-num">02</span>
+        <h3 class="secteur-title">Santé &amp; Médical</h3>
+        <p class="secteur-desc">Médicaments, dispositifs médicaux, réactifs biologiques, organes et greffons. Transport à température contrôlée disponible. Délais critiques respectés sans exception.</p>
+        <div class="secteur-tags">
+          <span class="stag">Chaîne du froid</span>
+          <span class="stag">Urgences vitales</span>
+          <span class="stag">CHU &amp; Cliniques</span>
+        </div>
+      </div>
+
+      <div class="secteur-card">
+        <span class="secteur-icon">📡</span>
+        <span class="secteur-num">03</span>
+        <h3 class="secteur-title">Télécom &amp; Réseaux</h3>
+        <p class="secteur-desc">Équipements réseau, baies de serveurs, matériels actifs. Intervention rapide pour maintenances correctives et déploiements urgents sur sites opérateurs.</p>
+        <div class="secteur-tags">
+          <span class="stag">Matériels actifs</span>
+          <span class="stag">Intervention urgente</span>
+          <span class="stag">Sites opérateurs</span>
+        </div>
+      </div>
+
+      <div class="secteur-card">
+        <span class="secteur-icon">⚛</span>
+        <span class="secteur-num">04</span>
+        <h3 class="secteur-title">Nucléaire &amp; Énergie</h3>
+        <p class="secteur-desc">Transport de pièces techniques pour centrales, équipements de mesure et matériaux industriels à destination de sites à accès contrôlé. Protocole renforcé.</p>
+        <div class="secteur-tags">
+          <span class="stag">Sites CNPE</span>
+          <span class="stag">Habilitation ZA</span>
+          <span class="stag">Protocole EDF</span>
+        </div>
+      </div>
+
+      <div class="secteur-card">
+        <span class="secteur-icon">⚙</span>
+        <span class="secteur-num">05</span>
+        <h3 class="secteur-title">Industrie &amp; Aéronautique</h3>
+        <p class="secteur-desc">Pièces de rechange urgentes, outillages spécifiques, sous-ensembles de production. Livraison sur chaîne de montage, zéro immobilisation d'outil de production.</p>
+        <div class="secteur-tags">
+          <span class="stag">Pièces critiques</span>
+          <span class="stag">Just-in-time</span>
+          <span class="stag">Aéronautique</span>
+        </div>
+      </div>
+
+      <div class="secteur-card">
+        <span class="secteur-icon">🏗</span>
+        <span class="secteur-num">06</span>
+        <h3 class="secteur-title">BTP, IT &amp; Autres</h3>
+        <p class="secteur-desc">Matériaux de chantier urgents, équipements informatiques, mobiliers sensibles. Nous intervenons pour tout secteur nécessitant une livraison rapide et sécurisée.</p>
+        <div class="secteur-tags">
+          <span class="stag">Matériaux chantier</span>
+          <span class="stag">Équipements IT</span>
+          <span class="stag">Sur-mesure</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VÉHICULES -->
+<section id="vehicules">
+  <div class="container">
+    <div class="reveal" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-bottom:0;">
+      <div>
+        <div class="sec-eyebrow">Notre flotte</div>
+        <h2 class="sec-title">Le bon véhicule<br><span>pour chaque mission</span></h2>
+      </div>
+      <p class="sec-desc" style="max-width:400px;">Du colis urgent au transport palette, notre flotte couvre tous vos besoins de volume et de type de marchandise.</p>
+    </div>
+
+    <div class="vehicules-grid reveal reveal-d1">
+      <div class="vehicule-card">
+        <span class="vehicule-emoji">🚐</span>
+        <div class="vehicule-name">Renault Kangoo</div>
+        <div class="vehicule-desc">Léger et agile, idéal pour les colis et petits chargements urgents en milieu urbain ou à accès restreint.</div>
+        <div class="vehicule-specs">
+          <div class="vspec">~600 kg charge utile</div>
+          <div class="vspec">Colis · Documents</div>
+          <div class="vspec">Accès zones urbaines</div>
+        </div>
+      </div>
+
+      <div class="vehicule-card">
+        <span class="vehicule-emoji">🚚</span>
+        <div class="vehicule-name">Renault Trafic</div>
+        <div class="vehicule-desc">Fourgon polyvalent pour les chargements intermédiaires. Aménageable, rapide, idéal pour les livraisons express régionales.</div>
+        <div class="vehicule-specs">
+          <div class="vspec">~1 100 kg charge utile</div>
+          <div class="vspec">Palette · Cartons</div>
+          <div class="vspec">Express régional</div>
+        </div>
+      </div>
+
+      <div class="vehicule-card">
+        <span class="vehicule-emoji">🚛</span>
+        <div class="vehicule-name">20m³ Hayon</div>
+        <div class="vehicule-desc">Hayon élévateur pour chargements lourds et palettes. Déchargement autonome sans contrainte de quai.</div>
+        <div class="vehicule-specs">
+          <div class="vspec">Hayon 1 500 kg</div>
+          <div class="vspec">Palettes · Matériel lourd</div>
+          <div class="vspec">Sans quai de chargement</div>
+        </div>
+      </div>
+
+      <div class="vehicule-card">
+        <span class="vehicule-emoji">📦</span>
+        <div class="vehicule-name">20m³ Débâchable</div>
+        <div class="vehicule-desc">Caisse ouverte par toit et côtés pour chargement par grue ou chariot. Idéal pour charges encombrantes ou hors gabarit standard.</div>
+        <div class="vehicule-specs">
+          <div class="vspec">Toit + côtés ouvrants</div>
+          <div class="vspec">Chargement grue</div>
+          <div class="vspec">Hors-gabarit</div>
+        </div>
+      </div>
+
+      <div class="vehicule-card">
+        <span class="vehicule-emoji">❄</span>
+        <div class="vehicule-name">Fourgon Frigorifique</div>
+        <div class="vehicule-desc">Température dirigée pour médicaments, produits biologiques, alimentaire ou tout produit thermosensible. Enregistrement continu.</div>
+        <div class="vehicule-specs">
+          <div class="vspec">Temp. dirigée</div>
+          <div class="vspec">Médical · Pharma</div>
+          <div class="vspec">Enregistreur inclus</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POURQUOI -->
+<section id="pourquoi">
+  <div class="container">
+    <div class="pourquoi-grid">
+      <div class="reveal">
+        <div class="sec-eyebrow">Notre différence</div>
+        <h2 class="sec-title">Pourquoi<br><span>Fret 13 Express ?</span></h2>
+        <p class="sec-desc" style="margin-bottom: 40px;">
+          Basés à <strong style="color:var(--text)">Rognac (13)</strong>, au carrefour stratégique de l'autoroute A8-A7, nous couvrons en express toute la PACA et le réseau national.
+        </p>
+
+        <div class="atouts">
+          <div class="atout">
+            <div class="atout-icon">⚡</div>
+            <div>
+              <div class="atout-title">Réactivité &lt; 2h</div>
+              <p class="atout-desc">Prise en charge en moins de 2 heures après confirmation. Intervention possible la nuit, le week-end et les jours fériés.</p>
+            </div>
+          </div>
+          <div class="atout">
+            <div class="atout-icon">📍</div>
+            <div>
+              <div class="atout-title">Suivi GPS temps réel</div>
+              <p class="atout-desc">Position live accessible à tout moment. Notifications aux étapes clés. Preuve de livraison horodatée avec photo.</p>
+            </div>
+          </div>
+          <div class="atout">
+            <div class="atout-icon">🛡</div>
+            <div>
+              <div class="atout-title">Assurance marchandise</div>
+              <p class="atout-desc">Chaque transport est couvert. Responsabilité civile et assurance tous risques incluses dans nos prestations.</p>
+            </div>
+          </div>
+          <div class="atout">
+            <div class="atout-icon">🔒</div>
+            <div>
+              <div class="atout-title">Confidentialité absolue</div>
+              <p class="atout-desc">Protocole discrétion pour toutes missions sensibles. Engagement de non-divulgation sur demande. Chauffeurs habilités.</p>
+            </div>
+          </div>
+          <div class="atout">
+            <div class="atout-icon">🤝</div>
+            <div>
+              <div class="atout-title">Interlocuteur unique</div>
+              <p class="atout-desc">Un référent dédié du devis à la livraison. Pas de plateforme, pas de centre d'appels. Vous avez un contact direct, humain, disponible.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-d2">
+        <div class="info-card">
+          <div class="info-header">📍 Zone de départ &amp; couverture</div>
+          <div class="info-body">
+            <div class="info-row">
+              <span class="info-row-label">Siège opérationnel</span>
+              <span class="info-row-val">Rognac, 13700</span>
+            </div>
+            <div class="info-row">
+              <span class="info-row-label">Département</span>
+              <span class="info-row-val">Bouches-du-Rhône (13)</span>
+            </div>
+            <div class="info-row">
+              <span class="info-row-label">Région</span>
+              <span class="info-row-val">PACA</span>
+            </div>
+            <div class="info-row">
+              <span class="info-row-label">Couverture nationale</span>
+              <span class="info-row-val">France entière</span>
+            </div>
+            <div class="info-row">
+              <span class="info-row-label">International</span>
+              <span class="info-row-val" style="font-size:14px">ES · IT · CH · BE · LU · DE · PT</span>
+            </div>
+            <div class="info-row">
+              <span class="info-row-label">Unités de transport</span>
+              <span class="info-row-val" style="font-size:14px">Colis → Palette</span>
+            </div>
+            <div class="info-row" style="border-bottom:none;">
+              <span class="info-row-label">Disponibilité</span>
+              <span class="zone-tag">24h/24 · 7j/7 · 365j</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 16px; background: var(--surface); border: 1px solid var(--border); padding: 20px 24px;">
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:12px;">🏁 Position stratégique</div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.75;">
+            Rognac est situé à l'échangeur A8/A7, à 20 min de Marseille, 10 min de l'aéroport de Marignane, et en accès direct vers l'A51 (Alpes) et la N113 (Arles · Montpellier). Un positionnement qui garantit des départs rapides vers n'importe quel point du territoire.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSUS -->
+<section id="processus">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <div class="sec-eyebrow" style="justify-content:center;">Comment ça marche</div>
+      <h2 class="sec-title">Simple. <span>Rapide.</span> Tracé.</h2>
+    </div>
+    <div class="process-steps reveal reveal-d1">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-icon-wrap">📞</div>
+        <div class="step-title">Demande</div>
+        <p class="step-desc">Appelez le 06 83 33 59 44 ou envoyez un email. Réponse en moins de 15 minutes.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-icon-wrap">📋</div>
+        <div class="step-title">Devis &amp; validation</div>
+        <p class="step-desc">Devis fixe et clair. Prix tout inclus, sans surprise. Confirmation immédiate.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-icon-wrap">📦</div>
+        <div class="step-title">Enlèvement</div>
+        <p class="step-desc">Votre chauffeur se présente dans le délai convenu. Chargement sécurisé et documenté.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-icon-wrap">✅</div>
+        <div class="step-title">Livraison &amp; preuve</div>
+        <p class="step-desc">Livraison avec émargement, photo et rapport horodaté transmis en temps réel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <div class="container-wide">
+    <div class="cta-inner">
+      <div>
+        <div class="cta-title">Un transport urgent à organiser ?</div>
+        <div class="cta-sub">Notre équipe décroche immédiatement — de nuit comme de jour, week-ends et jours fériés inclus.</div>
+      </div>
+      <a href="tel:0683335944" class="btn-white">📞 06 83 33 59 44</a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-eyebrow">Contact &amp; Devis</div>
+      <h2 class="sec-title">Parlons de votre<br><span>prochaine mission</span></h2>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-blocks reveal">
+        <div>
+          <div class="dispo"><div class="dispo-dot"></div>Disponible maintenant — 24h/24</div>
+        </div>
+
+        <div class="cblock">
+          <div class="cblock-icon">📞</div>
+          <div>
+            <div class="cblock-label">Téléphone direct</div>
+            <div class="cblock-val"><a href="tel:0683335944">06 83 33 59 44</a></div>
+            <div class="cblock-sub">Réponse garantie, toujours</div>
+          </div>
+        </div>
+
+        <div class="cblock">
+          <div class="cblock-icon">✉</div>
+          <div>
+            <div class="cblock-label">Email exploitation</div>
+            <div class="cblock-val"><a href="mailto:exploitation@fret13express.fr">exploitation@fret13express.fr</a></div>
+            <div class="cblock-sub">Devis détaillé sous 1h en journée</div>
+          </div>
+        </div>
+
+        <div class="cblock">
+          <div class="cblock-icon">📍</div>
+          <div>
+            <div class="cblock-label">Base opérationnelle</div>
+            <div class="cblock-val">Rognac — 13700</div>
+            <div class="cblock-sub">Bouches-du-Rhône · Région PACA</div>
+          </div>
+        </div>
+
+        <div class="cblock">
+          <div class="cblock-icon">🚛</div>
+          <div>
+            <div class="cblock-label">Flotte disponible</div>
+            <div class="cblock-val">Kangoo · Trafic · 20m³ · Frigo</div>
+            <div class="cblock-sub">Du colis à la palette</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-d2">
+        <form class="form" onsubmit="handleForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Société / Nom *</label>
+              <input type="text" class="form-input" placeholder="Nom ou raison sociale" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Téléphone *</label>
+              <input type="tel" class="form-input" placeholder="06 00 00 00 00" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email *</label>
+            <input type="email" class="form-input" placeholder="votre@entreprise.fr" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Type de véhicule</label>
+              <select class="form-select">
+                <option value="">Indifférent / à définir</option>
+                <option>Kangoo (petits colis)</option>
+                <option>Trafic (intermédiaire)</option>
+                <option>20m³ Hayon (palettes)</option>
+                <option>20m³ Débâchable</option>
+                <option>Frigorifique</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Délai souhaité</label>
+              <select class="form-select">
+                <option>Dans les 2h</option>
+                <option>Aujourd'hui</option>
+                <option>Demain</option>
+                <option>Dans la semaine</option>
+                <option>Date à planifier</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Ville de départ</label>
+              <input type="text" class="form-input" placeholder="Ville ou code postal">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Destination</label>
+              <input type="text" class="form-input" placeholder="Ville, région ou pays">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Secteur d'activité</label>
+            <select class="form-select">
+              <option value="">Sélectionner votre secteur…</option>
+              <option>Militaire / Défense</option>
+              <option>Santé / Médical / Pharma</option>
+              <option>Télécom / Réseaux</option>
+              <option>Nucléaire / Énergie</option>
+              <option>Industrie / Aéronautique</option>
+              <option>BTP / Logistique</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Description &amp; contraintes particulières</label>
+            <textarea class="form-textarea" placeholder="Nature du chargement, poids estimé, dimensions, contraintes d'accès, confidentialité…"></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="submitBtn">
+            ➜ Envoyer ma demande de devis
+          </button>
+          <p class="form-note">🔒 Informations strictement confidentielles · Réponse sous 15 min</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">FRET 13 <em>EXPRESS</em></div>
+        <p class="footer-tagline">
+          Transport express et dédié depuis Rognac (13), au cœur de la région PACA.
+          Spécialiste des secteurs critiques : militaire, santé, télécom, nucléaire.
+          France entière et pays limitrophes — 24h/24, 7j/7.
+        </p>
+        <div class="footer-badges">
+          <span class="fbadge">Assuré</span>
+          <span class="fbadge">GPS Live</span>
+          <span class="fbadge">24h/7j</span>
+          <span class="fbadge">Confidentiel</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Secteurs</div>
+        <ul class="footer-links">
+          <li><a href="#secteurs">Militaire &amp; Défense</a></li>
+          <li><a href="#secteurs">Santé &amp; Médical</a></li>
+          <li><a href="#secteurs">Télécom &amp; Réseaux</a></li>
+          <li><a href="#secteurs">Nucléaire &amp; Énergie</a></li>
+          <li><a href="#secteurs">Industrie &amp; Aéronautique</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Flotte</div>
+        <ul class="footer-links">
+          <li><a href="#vehicules">Renault Kangoo</a></li>
+          <li><a href="#vehicules">Renault Trafic</a></li>
+          <li><a href="#vehicules">20m³ avec hayon</a></li>
+          <li><a href="#vehicules">20m³ débâchable</a></li>
+          <li><a href="#vehicules">Fourgon frigorifique</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="tel:0683335944">📞 06 83 33 59 44</a></li>
+          <li><a href="mailto:exploitation@fret13express.fr">✉ exploitation@fret13express.fr</a></li>
+          <li><a href="#">Rognac — 13700 — PACA</a></li>
+          <li><a href="#contact">Demander un devis</a></li>
+          <li><a href="#">Mentions légales</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 <em>FRET 13 EXPRESS</em> · Tous droits réservés</div>
+      <div class="footer-copy">Transport Express &amp; Dédié · Rognac (13) · PACA · France · Europe</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Mobile nav
+  let navOpen = false;
+  function toggleNav() {
+    navOpen = !navOpen;
+    const links = document.getElementById('navLinks');
+    if (navOpen) {
+      links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:rgba(6,8,16,.98);padding:20px 24px 28px;border-bottom:1px solid #1e2d4a;gap:18px;z-index:999;';
+    } else {
+      links.style.cssText = '';
+    }
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', () => { if (navOpen) { navOpen = false; document.getElementById('navLinks').style.cssText = ''; } });
+  });
+
+  // Form submit
+  function handleForm(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = '✓ Demande reçue — Nous vous contactons sous 15 minutes';
+    btn.style.background = '#00dc78';
+    btn.style.pointerEvents = 'none';
+    setTimeout(() => {
+      btn.textContent = '➜ Envoyer ma demande de devis';
+      btn.style.background = '';
+      btn.style.pointerEvents = '';
+      e.target.reset();
+    }, 6000);
+  }
+</script>
+</body>
+</html>
